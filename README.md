@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="kiro.jpg" alt="Kiro" width="220" />
+</p>
+
 # edu-dot-files
 
 User-level dotfiles and shared assets for the Kiro distro: the `/etc/skel/` snapshot that new users inherit, a curated Plank dock theme library, and Kiro-branded reference configs for pacman / GPG / DNS. The user-facing companion to the system-level [edu-system-files](https://github.com/erikdubois/edu-system-files).
