@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 2026.05.24
+
+### What Changed
+- Removed `etc/skel/.config/gtk-3.0/bookmarks` because it hardcoded `/home/erik/...` paths that break for every other user. GTK already shows the standard XDG folders (Home, Desktop, Documents, Downloads, Music, Pictures, Videos) plus Trash in the file-manager sidebar automatically via `~/.config/user-dirs.dirs`, so users still get the default folders without it.
+
+### Technical Details
+- The GTK bookmarks format requires literal absolute `file://` paths and does not expand `$HOME`/`~`, so per-user correctness would have needed a first-login rewrite script. Removing the file was simpler than maintaining that and only dropped the custom (non-XDG) entries — Projects, DATA, .config, .icons, .themes.
+- Note: [.fehbg](etc/skel/.fehbg) and [variety.desktop](etc/skel/.config/autostart/variety.desktop) still contain hardcoded `/home/erik` paths (left untouched this session).
+
+### Files Modified
+- CHANGELOG.md
+- etc/skel/.config/gtk-3.0/bookmarks (removed)
+
 ## 2026.05.21
 
 ### What Changed
