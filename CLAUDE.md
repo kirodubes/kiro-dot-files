@@ -18,7 +18,7 @@ sudo cp -r usr/ /usr/
 sudo reboot
 ```
 
-The `up.sh` script commits all changes with message "update" and pushes to origin — it is the only release mechanism.
+The `up.sh` script refreshes the `usr/local/share/kiro/` reference configs from the `kiro-iso` airootfs (override with `KIRO_ISO_DIR`), then commits all changes with message "update" and pushes to origin — it is the only release mechanism.
 
 ## Directory layout
 
@@ -27,7 +27,7 @@ The `up.sh` script commits all changes with message "update" and pushes to origi
 - `etc/sysctl.d/` — Kernel parameter tuning (BBR, ZRAM, BORE scheduler, I/O, security).
 - `etc/udev/rules.d/` — Device optimization rules; `67-laptop-optimization.rules` is intentionally disabled (desktop-only system).
 - `etc/systemd/` — system.conf.d, journald.conf.d, user.conf.d overrides.
-- `usr/local/share/kiro/` — System-wide Kiro configs: pacman.conf (includes Nemesis and Chaotic AUR repos), gpg.conf, nsswitch.conf, mirrorlist.
+- `usr/local/share/kiro/` — System-wide Kiro configs: pacman.conf (includes Nemesis and Chaotic AUR repos), gpg.conf, nsswitch.conf, mirrorlist. `up.sh` refreshes pacman.conf, nsswitch.conf and mirrorlist from the `kiro-iso` airootfs on every run so they mirror the shipped ISO; gpg.conf has no ISO source and is hand-maintained.
 - `usr/share/plank/themes/` — 30+ Plank dock themes.
 
 ## Validation

@@ -20,12 +20,18 @@ New users created after installation inherit this content automatically. Existin
 ~160 [Plank](https://launchpad.net/plank) dock themes bundled together: macOS, Gnosemite, Cyberpunk, Catppuccin, Solarized, TokyoNight, Mojave, Monterey, and many more. Selectable from Plank's right-click menu once installed.
 
 ### `usr/local/share/kiro/` — Kiro reference configs
-Read-only canonical copies of the configs that the `kiro-fix-*` toolchain (in [edu-system-files](https://github.com/erikdubois/edu-system-files)) restores when things drift:
+Canonical copies of the configs that the `kiro-fix-*` toolchain (in [edu-system-files](https://github.com/erikdubois/edu-system-files)) restores when things drift:
 
 - `pacman.conf`
 - `mirrorlist`
 - `gpg.conf`
 - `nsswitch.conf`
+
+`pacman.conf`, `mirrorlist` and `nsswitch.conf` are refreshed automatically from the
+`kiro-iso` airootfs (`archiso/airootfs/etc/`) on every `up.sh` run, so the canonical
+copies always mirror what the ISO ships. `gpg.conf` has no ISO source and is
+hand-maintained in this repo. Override the ISO location with the `KIRO_ISO_DIR`
+environment variable if the `kiro-iso` repo lives outside `~/KIRO/kiro-iso`.
 
 ## Installation
 
