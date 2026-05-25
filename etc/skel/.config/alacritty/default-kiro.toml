@@ -63,5 +63,5 @@ history = 50000
 opacity = 0.8
 
 [window.dimensions]
-columns = 110
-lines = 40
+columns = 100
+lines = 30
