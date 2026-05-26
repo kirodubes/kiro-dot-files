@@ -95,3 +95,19 @@ application/x-font-vfont=sublime_text.desktop;
 
 [Default Applications]
 application/x-font-vfont=sublime_text.desktop
+text/plain=sublime_text.desktop
+text/markdown=sublime_text.desktop
+text/x-python=sublime_text.desktop
+text/x-python3=sublime_text.desktop
+application/json=sublime_text.desktop
+application/x-shellscript=sublime_text.desktop
+text/x-shellscript=sublime_text.desktop
+text/x-csrc=sublime_text.desktop
+text/x-chdr=sublime_text.desktop
+text/x-lua=sublime_text.desktop
+text/css=sublime_text.desktop
+application/xml=sublime_text.desktop
+text/x-log=sublime_text.desktop
+application/x-yaml=sublime_text.desktop
+x-scheme-handler/sgnl=signal.desktop
+x-scheme-handler/signalcaptcha=signal.desktop
