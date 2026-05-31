@@ -71,7 +71,7 @@ cp -rT /etc/skel ~/
 
 ## Websites
 
-Information : https://erikdubois.be
+Information : https://kiroproject.be
 
 ## Social Media
 

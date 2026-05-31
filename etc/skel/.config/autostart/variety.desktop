@@ -2,7 +2,7 @@
 Name=Variety
 Comment=Variety Wallpaper Changer
 Categories=GNOME;GTK;Utility;
-Exec=/usr/bin/variety --profile /home/erik/.config/variety/
+Exec=/usr/bin/variety
 MimeType=text/uri-list;x-scheme-handler/variety;x-scheme-handler/vrty;
 Icon=variety
 Terminal=false
