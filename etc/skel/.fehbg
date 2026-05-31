@@ -1,2 +1,0 @@
-#!/bin/sh
-feh --no-fehbg --bg-fill '/home/erik/.config/ohmychadwm/wallpapers/dracula.jpg' 
