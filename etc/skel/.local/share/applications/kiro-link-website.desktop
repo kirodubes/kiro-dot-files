@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Kiro Website
+Comment=https://kiroproject.be
+Exec=xdg-open https://kiroproject.be
+Icon=kiro
+Terminal=false
+Categories=X-Kiro;
+Keywords=kiro;website;home;homepage;

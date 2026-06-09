@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Kiro Releases
+Comment=https://kiroproject.be/releases.html
+Exec=xdg-open https://kiroproject.be/releases.html
+Icon=kiro-green
+Terminal=false
+Categories=X-Kiro;
+Keywords=kiro;releases;iso;download;changelog;

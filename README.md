@@ -2,9 +2,9 @@
   <img src="kiro.jpg" alt="Kiro" width="220" />
 </p>
 
-# edu-dot-files
+# kiro-dot-files
 
-User-level dotfiles and shared assets for the Kiro distro: the `/etc/skel/` snapshot that new users inherit, a curated Plank dock theme library, and Kiro-branded reference configs for pacman / GPG / DNS. The user-facing companion to the system-level [edu-system-files](https://github.com/erikdubois/edu-system-files).
+User-level dotfiles and shared assets for the Kiro distro: the `/etc/skel/` snapshot that new users inherit, a curated Plank dock theme library, and Kiro-branded reference configs for pacman / GPG / DNS. The user-facing companion to the system-level [kiro-system-files](https://github.com/kirodubes/kiro-system-files).
 
 ## What's in this repo
 
@@ -20,7 +20,7 @@ New users created after installation inherit this content automatically. Existin
 ~160 [Plank](https://launchpad.net/plank) dock themes bundled together: macOS, Gnosemite, Cyberpunk, Catppuccin, Solarized, TokyoNight, Mojave, Monterey, and many more. Selectable from Plank's right-click menu once installed.
 
 ### `usr/local/share/kiro/` — Kiro reference configs
-Canonical copies of the configs that the `kiro-fix-*` toolchain (in [edu-system-files](https://github.com/erikdubois/edu-system-files)) restores when things drift:
+Canonical copies of the configs that the `kiro-fix-*` toolchain (in [kiro-system-files](https://github.com/kirodubes/kiro-system-files)) restores when things drift:
 
 - `pacman.conf`
 - `mirrorlist`
@@ -45,7 +45,7 @@ Server = https://erikdubois.github.io/$repo/$arch
 
 ```bash
 sudo pacman -Syu
-sudo pacman -S edu-dot-files
+sudo pacman -S kiro-dot-files
 ```
 
 This installs `etc/skel/` into `/etc/skel/`, the Plank themes into `/usr/share/plank/themes/`, and the Kiro reference configs into `/usr/local/share/kiro/`.
@@ -53,8 +53,8 @@ This installs `etc/skel/` into `/etc/skel/`, the Plank themes into `/usr/share/p
 ### Manual
 
 ```bash
-git clone https://github.com/erikdubois/edu-dot-files.git
-cd edu-dot-files
+git clone https://github.com/kirodubes/kiro-dot-files.git
+cd kiro-dot-files
 sudo cp -r etc/. /etc/
 sudo cp -r usr/. /usr/
 ```
@@ -67,7 +67,7 @@ cp -rT /etc/skel ~/
 
 ## Related
 
-- [edu-system-files](https://github.com/erikdubois/edu-system-files) — system-level companion repo (`/etc/sysctl.d`, `/etc/udev`, the `kiro-*` toolchain in `/usr/local/bin/`).
+- [kiro-system-files](https://github.com/kirodubes/kiro-system-files) — system-level companion repo (`/etc/sysctl.d`, `/etc/udev`, the `kiro-*` toolchain in `/usr/local/bin/`).
 
 ## Websites
 

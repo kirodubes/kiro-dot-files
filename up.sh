@@ -173,6 +173,35 @@ refresh_kiro_configs() {
     log_success "Kiro reference configs refreshed (gpg.conf left as-is)"
 }
 
+# Block the release if any personal-info leak slipped into a tracked file.
+# The only legitimate "erik" references are author bylines, the contact email
+# and the public account handles (github/youtube/ko-fi/paypal) — all of which
+# contain "erikdubois" or "erik dubois"/"erik.dubois". Anything else (a stray
+# /home/erik path, a hardcoded profile dir) is a leak that must not ship in
+# /etc/skel. CHANGELOG.md and up.sh itself are excluded: the former documents
+# past cleanups in prose, the latter carries this allow-list pattern.
+check_personal_leaks() {
+    log_section "Checking for personal-info leaks"
+
+    local allow='erikdubois|erik[. ]dubois'
+    local hits
+    hits="$(grep -rniI 'erik' "${SCRIPT_DIR}" \
+                --exclude-dir=.git \
+                --exclude=CHANGELOG.md \
+                --exclude=up.sh \
+            | grep -Eiv "${allow}" || true)"
+
+    if [[ -n "${hits}" ]]; then
+        log_error "Leak check FAILED — unexpected 'erik' reference(s) found"
+        echo "${hits}"
+        echo
+        echo "${RED}Refusing to commit/push. Replace personal paths with \$HOME or ~, then re-run up.sh.${RESET}"
+        exit 1
+    fi
+
+    log_success "Leak check passed — only author/handle references remain"
+}
+
 #####################################################################
 # Main
 #####################################################################
@@ -192,6 +221,8 @@ main() {
     fi
 
     refresh_kiro_configs
+
+    check_personal_leaks
 
     git_commit_and_push
 

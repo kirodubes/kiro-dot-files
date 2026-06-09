@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Kiro Source Code
+Comment=https://github.com/kirodubes
+Exec=xdg-open https://github.com/kirodubes
+Icon=kiro-white
+Terminal=false
+Categories=X-Kiro;
+Keywords=kiro;source;code;github;repositories;

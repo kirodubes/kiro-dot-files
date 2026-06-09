@@ -22,7 +22,7 @@ The `up.sh` script refreshes the `usr/local/share/kiro/` reference configs from 
 
 ## Directory layout
 
-- `etc/skel/.bin/` — 41 user-facing shell scripts installed to `~/.bin/` on new accounts. Covers system utilities (`edu-check-optimizations`, `update-system`), color tools, ASCII art demos, and network setup helpers under `samba/`.
+- `etc/skel/.bin/` — 41 user-facing shell scripts installed to `~/.bin/` on new accounts. Covers system utilities (`kiro-check-optimizations`, `update-system`), color tools, ASCII art demos, and network setup helpers under `samba/`.
 - `etc/skel/.config/` — Application configs for alacritty, btop, fastfetch, micro, neofetch, plank, Qt5/Kvantum, GTK3/4, paru.
 - `etc/sysctl.d/` — Kernel parameter tuning (BBR, ZRAM, BORE scheduler, I/O, security).
 - `etc/udev/rules.d/` — Device optimization rules; `67-laptop-optimization.rules` is intentionally disabled (desktop-only system).
@@ -34,7 +34,7 @@ The `up.sh` script refreshes the `usr/local/share/kiro/` reference configs from 
 
 ```bash
 # Check live system matches expected optimizations
-~/.bin/edu-check-optimizations
+~/.bin/kiro-check-optimizations
 
 # Verify udev rule syntax
 udevadm verify /etc/udev/rules.d/

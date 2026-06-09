@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Kiro Discussions
+Comment=https://github.com/kirodubes/kiro-discussions/discussions
+Exec=xdg-open https://github.com/kirodubes/kiro-discussions/discussions
+Icon=kiro-bleu
+Terminal=false
+Categories=X-Kiro;
+Keywords=kiro;discussions;ideas;community;suggestions;
