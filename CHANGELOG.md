@@ -1,5 +1,37 @@
 # CHANGELOG
 
+## 2026.06.09
+
+### What Changed
+- Added a **Kiro** submenu to the XFCE applications menu with four web-link launchers
+  (each opens a site via `xdg-open`), so users can reach the project's key destinations
+  straight from the menu — no welcome app. Links: Kiro Website (https://kiroproject.be),
+  Kiro Releases (https://kiroproject.be/releases.html), Kiro Discussions
+  (https://github.com/kirodubes/kiro-discussions/discussions), Kiro Source Code
+  (https://github.com/kirodubes). Each launcher uses a distinct coloured Kiro icon
+  (`kiro`, `kiro-green`, `kiro-bleu`, `kiro-white`). Verified live on the kiro VM.
+
+### Technical Details
+- Implemented as a standard XDG menu drop-in (NOT a frozen full menu): a `.directory`
+  defines the submenu, an `applications-merged` drop-in merges it into the stock menu via
+  its `DefaultMergeDirs`/`Merge type="all"`, and the launchers carry a clean `X-Kiro`
+  category. This survives future app additions, unlike MenuLibre's full `xfce-applications.menu`
+  rewrite (which overrides the stock menu and *hides* the submenu — do not ship it; if it
+  reappears in a user's `~/.config/menus/`, delete it).
+- Whisker menu sorts category items alphabetically and ignores the menu `<Layout>`, so the
+  displayed order is alphabetical (Discussions, Releases, Source Code, Website). A `<Layout>`
+  is kept for non-Whisker menus; a custom order would require globally disabling Whisker's
+  alphabetical sort, which we chose not to impose.
+- The `kiro-white` icon ships from **kiro-system-files**
+  (`usr/share/icons/hicolor/scalable/apps/kiro-white.png`); the other three colours were
+  already present there.
+
+### Files Modified
+- etc/skel/.local/share/desktop-directories/kiro.directory (new)
+- etc/skel/.config/menus/applications-merged/kiro.menu (new)
+- etc/skel/.local/share/applications/kiro-link-{website,releases,discussions,code}.desktop (new)
+- CHANGELOG.md
+
 ## 2026.05.24
 
 ### What Changed
