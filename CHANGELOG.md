@@ -11,11 +11,21 @@
   to the Layout and a `<Merge type="all"/>` safety net so future `X-Kiro` apps can't be
   silently hidden again.
 
+- **Root cause (found via GMenu walk on picard):** the Kiro submenu never
+  rendered in XFCE at all — the fragment lived in `applications-merged/`, but XFCE
+  (menu prefix `xfce-`) only merges **`xfce-applications-merged/`**, so every
+  `X-Kiro` app (the links *and* `kiro-news`) fell into the catch-all **`/Other`**,
+  not a `/Kiro` folder. Fixed by shipping the fragment in
+  `etc/skel/.config/menus/xfce-applications-merged/kiro.menu` — GMenu then builds
+  a proper `/Kiro` folder with all five entries (kiro-news first). The
+  `applications-merged/` copy is kept for non-XFCE/garcon-classic menus.
+
 ### Technical Details
-- `etc/skel/.config/menus/applications-merged/kiro.menu` — Layout now lists
-  `kiro-news.desktop` first, then the four link launchers, then `<Merge type="all"/>`.
+- `etc/skel/.config/menus/xfce-applications-merged/kiro.menu` — **new**, the copy
+  XFCE actually merges. Same `<Layout>` (kiro-news first, four links, `<Merge type="all"/>`).
+- `etc/skel/.config/menus/applications-merged/kiro.menu` — kept (Layout also updated).
 - Skel-scoped: applies to new accounts. Existing users keep their `~/.config` copy;
-  `kiro-skell` re-applies if needed.
+  `kiro-skell` re-applies (verified live on picard — `/Kiro` folder built correctly).
 
 ## 2026.06.09
 
