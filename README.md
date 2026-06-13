@@ -39,9 +39,12 @@ environment variable if the `kiro-iso` repo lives outside `~/KIRO/kiro-iso`.
 
 ```ini
 [nemesis_repo]
-SigLevel = Never
 Server = https://erikdubois.github.io/$repo/$arch
 ```
+
+> `nemesis_repo` is PGP-signed by the Kiro key (trusted via `kiro-keyring`); it
+> inherits your global `SigLevel`. Adding it by hand before the keyring is present?
+> Use `SigLevel = Optional` for the repo until then.
 
 ```bash
 sudo pacman -Syu
