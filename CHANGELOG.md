@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 2026.06.13
+
+### What Changed
+- Fixed the **Kiro** submenu hiding new entries: `kiro.menu`'s `<Layout>` listed the
+  four web-link launchers explicitly with no `<Merge type="all"/>`, so garcon showed
+  *only* those four and hid any other `X-Kiro` app — which is why the new
+  `kiro-news.desktop` (from the `kiro-news` package, arriving as a `kiro-system-files`
+  dependency) never appeared in the menu on fresh installs. Added `kiro-news.desktop`
+  to the Layout and a `<Merge type="all"/>` safety net so future `X-Kiro` apps can't be
+  silently hidden again.
+
+### Technical Details
+- `etc/skel/.config/menus/applications-merged/kiro.menu` — Layout now lists
+  `kiro-news.desktop` first, then the four link launchers, then `<Merge type="all"/>`.
+- Skel-scoped: applies to new accounts. Existing users keep their `~/.config` copy;
+  `kiro-skell` re-applies if needed.
+
 ## 2026.06.09
 
 ### What Changed
