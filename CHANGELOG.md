@@ -15,17 +15,21 @@
   rendered in XFCE at all — the fragment lived in `applications-merged/`, but XFCE
   (menu prefix `xfce-`) only merges **`xfce-applications-merged/`**, so every
   `X-Kiro` app (the links *and* `kiro-news`) fell into the catch-all **`/Other`**,
-  not a `/Kiro` folder. Fixed by shipping the fragment in
-  `etc/skel/.config/menus/xfce-applications-merged/kiro.menu` — GMenu then builds
-  a proper `/Kiro` folder with all five entries (kiro-news first). The
-  `applications-merged/` copy is kept for non-XFCE/garcon-classic menus.
+  not a `/Kiro` folder.
+- **Moved the whole Kiro submenu from per-user skel to system-wide**, so a package
+  update delivers it to **every** account — new *and* existing — with no
+  `kiro-skell` step. Existing users pick up the system fragment from `/etc/xdg`
+  on their next login (their stale skel copy was in the wrong dir and is ignored).
+  Verified via GMenu on picard: `/Kiro` folder builds with all five entries,
+  kiro-news first.
 
 ### Technical Details
-- `etc/skel/.config/menus/xfce-applications-merged/kiro.menu` — **new**, the copy
-  XFCE actually merges. Same `<Layout>` (kiro-news first, four links, `<Merge type="all"/>`).
-- `etc/skel/.config/menus/applications-merged/kiro.menu` — kept (Layout also updated).
-- Skel-scoped: applies to new accounts. Existing users keep their `~/.config` copy;
-  `kiro-skell` re-applies (verified live on picard — `/Kiro` folder built correctly).
+- `etc/xdg/menus/xfce-applications-merged/kiro.menu` — **new system-wide** menu
+  fragment (the dir XFCE merges). Layout: kiro-news first, four links, `<Merge type="all"/>`.
+- `usr/share/desktop-directories/kiro.directory` — moved from skel.
+- `usr/share/applications/kiro-link-{website,releases,discussions,code}.desktop` — moved from skel.
+- Removed all per-user skel copies (incl. the dead `applications-merged/` one). `kiro-news.desktop`
+  was already system-wide (shipped by the `kiro-news` package).
 
 ## 2026.06.09
 
