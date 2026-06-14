@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 2026.06.14
+
+### What Changed
+- Added **Kiro Assistant** to the **Kiro** applications-menu folder. The
+  `<Layout>` in `kiro.menu` now lists `kiro-assistant.desktop` explicitly
+  (alongside the existing `<Merge type="all"/>` safety net), so it appears in
+  the Kiro folder with the rest of the Kiro entries.
+
+### Technical Details
+- The app's `kiro-assistant.desktop` (shipped by the `kiro-assistant` package)
+  gained the `X-Kiro` category, which is what `kiro.menu`'s
+  `<Include><Category>X-Kiro</Category>` selects on. Listing the filename in the
+  Layout keeps inclusion explicit and avoids the historic suppression gotcha.
+- Reaches existing users via `kiro-skell` (the user-side `applications-merged/`
+  fragment is not package-delivered).
+
+### Files Modified
+- `etc/skel/.config/menus/applications-merged/kiro.menu`
+
 ## 2026.06.13
 
 ### What Changed

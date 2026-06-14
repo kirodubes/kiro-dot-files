@@ -14,6 +14,7 @@
             <Filename>kiro-link-releases.desktop</Filename>
             <Filename>kiro-link-discussions.desktop</Filename>
             <Filename>kiro-link-code.desktop</Filename>
+            <Filename>kiro-assistant.desktop</Filename>
             <Merge type="all"/>
         </Layout>
     </Menu>
