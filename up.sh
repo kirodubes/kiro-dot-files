@@ -135,44 +135,6 @@ git_commit_and_push() {
     fi
 }
 
-# The files in usr/local/share/kiro/ are the canonical copies the kiro-fix-*
-# toolchain restores from at runtime, so they must mirror what the ISO ships.
-# Refresh them from the kiro-iso airootfs on every release. gpg.conf has no ISO
-# source and is hand-maintained here, so it is deliberately left untouched.
-# Override the source location with KIRO_ISO_DIR if the repo lives elsewhere.
-refresh_kiro_configs() {
-    local iso_airootfs="${KIRO_ISO_DIR:-${HOME}/KIRO/kiro-iso}/archiso/airootfs"
-    local dest="${SCRIPT_DIR}/usr/local/share/kiro"
-
-    if [[ ! -d "${iso_airootfs}" ]]; then
-        log_warn "kiro-iso airootfs not found at ${iso_airootfs} — skipping Kiro config refresh"
-        return 0
-    fi
-
-    log_section "Refreshing Kiro reference configs from kiro-iso"
-
-    # ISO-relative source path : destination filename in usr/local/share/kiro/
-    local pairs=(
-        "etc/pacman.conf:pacman.conf"
-        "etc/nsswitch.conf:nsswitch.conf"
-        "etc/pacman.d/mirrorlist:mirrorlist"
-    )
-
-    local pair src name
-    for pair in "${pairs[@]}"; do
-        src="${iso_airootfs}/${pair%%:*}"
-        name="${pair##*:}"
-        if [[ -f "${src}" ]]; then
-            cp -- "${src}" "${dest}/${name}"
-            log_info "Refreshed ${name}"
-        else
-            log_warn "${src} missing in ISO — leaving ${name} unchanged"
-        fi
-    done
-
-    log_success "Kiro reference configs refreshed (gpg.conf left as-is)"
-}
-
 # Block the release if any personal-info leak slipped into a tracked file.
 # The only legitimate "erik" references are author bylines, the contact email
 # and the public account handles (github/youtube/ko-fi/paypal) — all of which
@@ -219,8 +181,6 @@ main() {
         log_section "Running repo.sh"
         bash "${SCRIPT_DIR}/repo.sh"
     fi
-
-    refresh_kiro_configs
 
     check_personal_leaks
 
