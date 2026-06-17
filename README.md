@@ -19,19 +19,10 @@ New users created after installation inherit this content automatically. Existin
 ### `usr/share/plank/themes/` — Plank dock theme library
 ~160 [Plank](https://launchpad.net/plank) dock themes bundled together: macOS, Gnosemite, Cyberpunk, Catppuccin, Solarized, TokyoNight, Mojave, Monterey, and many more. Selectable from Plank's right-click menu once installed.
 
-### `usr/local/share/kiro/` — Kiro reference configs
-Canonical copies of the configs that the `kiro-fix-*` toolchain (in [kiro-system-files](https://github.com/kirodubes/kiro-system-files)) restores when things drift:
-
-- `pacman.conf`
-- `mirrorlist`
-- `gpg.conf`
-- `nsswitch.conf`
-
-`pacman.conf`, `mirrorlist` and `nsswitch.conf` are refreshed automatically from the
-`kiro-iso` airootfs (`archiso/airootfs/etc/`) on every `up.sh` run, so the canonical
-copies always mirror what the ISO ships. `gpg.conf` has no ISO source and is
-hand-maintained in this repo. Override the ISO location with the `KIRO_ISO_DIR`
-environment variable if the `kiro-iso` repo lives outside `~/KIRO/kiro-iso`.
+> The canonical `pacman.conf`, `mirrorlist`, `gpg.conf` and `nsswitch.conf` reference
+> configs — and the `kiro-fix-*` toolchain that restores them when things drift — now
+> live in [kiro-system-files](https://github.com/kirodubes/kiro-system-files), not in
+> this repo.
 
 ## Installation
 
@@ -51,7 +42,7 @@ sudo pacman -Syu
 sudo pacman -S kiro-dot-files
 ```
 
-This installs `etc/skel/` into `/etc/skel/`, the Plank themes into `/usr/share/plank/themes/`, and the Kiro reference configs into `/usr/local/share/kiro/`.
+This installs `etc/skel/` into `/etc/skel/` and the Plank themes into `/usr/share/plank/themes/`.
 
 ### Manual
 
