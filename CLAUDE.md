@@ -50,7 +50,6 @@ All scripts use bash. `up.sh` intentionally omits `set -e` (commented out). New 
 
 ## Key config notes
 
-- `pacman.conf` includes `[nemesis_repo]` and `[chaotic-aur]` — these require the corresponding GPG keys and mirrorlist entries to be installed first.
 - btop themes are Catppuccin variants stored in `.config/btop/themes/`.
 - micro editor ships 200+ YAML syntax files and 4 color schemes under `.config/micro/`.
 - The `vm.swappiness = 100` in sysctl is intentional for ZRAM-heavy setups — not a typo.
