@@ -37,19 +37,19 @@ white = "0xc0caf5"
 size = 14.0
 
 [font.bold]
-family = "hack"
+family = "Hack Nerd Font Mono"
 style = "Bold"
 
 [font.bold_italic]
-family = "monospace"
+family = "Hack Nerd Font Mono"
 style = "Bold Italic"
 
 [font.italic]
-family = "hack"
+family = "Hack Nerd Font Mono"
 style = "Italic"
 
 [font.normal]
-family = "hack"
+family = "Hack Nerd Font Mono"
 style = "Regular"
 
 [[keyboard.bindings]]
@@ -61,7 +61,15 @@ history = 50000
 
 [window]
 opacity = 0.8
+decorations = "Full"
+dynamic_title = true
+startup_mode = "Windowed"
+blur = false
 
 [window.dimensions]
 columns = 100
 lines = 30
+
+[window.padding]
+x = 10
+y = 10
