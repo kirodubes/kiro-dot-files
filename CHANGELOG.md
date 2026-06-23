@@ -1,5 +1,28 @@
 # CHANGELOG
 
+## 2026.06.23
+
+### What Changed
+- **New default fastfetch look in `/etc/skel`** — replaced
+  `etc/skel/.config/fastfetch/config.jsonc` with the current Kiro boxed layout
+  (truecolor Kiro **K** logo, `>  ` separator with red separator colour, the
+  ╔══╣══╚ box-drawing frame around kernel/uptime/distro/desktop/term/shell/
+  cpu+temp/gpu/disk/memory/network + a colors row), matching the new bundled
+  default in `fastfetch-tweak-tool`.
+- **Fixed a shipped privacy leak + broken logo.** The old skel config pointed
+  the logo at `/home/erik/KIRO/fastfetch-tweak-tool/...` — Erik's home path,
+  which leaked his environment and **does not exist on any user's machine**, so
+  the logo silently failed out of the box. The config is now **self-contained**:
+  the Kiro **K** art ships beside it as
+  `etc/skel/.config/fastfetch/kiro-color-24.txt` and the logo source is
+  `~/.config/fastfetch/kiro-color-24.txt` (verified fastfetch expands `~`), so it
+  works for every user with no dependency on `fastfetch-tweak-tool` being
+  installed (it is not on the ISO — only `fastfetch-git` is).
+
+### Files Modified
+- `etc/skel/.config/fastfetch/config.jsonc` — new default layout, self-contained logo path.
+- `etc/skel/.config/fastfetch/kiro-color-24.txt` — bundled Kiro K ASCII/truecolor art (new).
+
 ## 2026.06.14
 
 ### What Changed
