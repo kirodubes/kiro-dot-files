@@ -37,8 +37,7 @@
     },
     {
       "key": "{$2}{#34}󰇄 desktop  ",
-      "type": "de",
-      "keyColor": "white"
+      "type": "de"
     },
     {
       "key": "{$2}{#35} term     ",
