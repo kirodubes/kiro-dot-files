@@ -67,7 +67,7 @@ startup_mode = "Windowed"
 blur = false
 
 [window.dimensions]
-columns = 100
+columns = 110
 lines = 30
 
 [window.padding]
