@@ -18,4 +18,21 @@
             <Merge type="all"/>
         </Layout>
     </Menu>
+    <Menu>
+        <Name>Kiro Apps</Name>
+        <Directory>kiro-apps.directory</Directory>
+        <Include>
+            <Category>X-Kiro-Apps</Category>
+        </Include>
+        <Layout>
+            <Filename>archlinux-tweak-tool.desktop</Filename>
+            <Filename>kiro-iso-builder.desktop</Filename>
+            <Filename>alacritty-tweak-tool.desktop</Filename>
+            <Filename>fastfetch-tweak-tool.desktop</Filename>
+            <Filename>fish-tweak-tool.desktop</Filename>
+            <Filename>archlinux-logout-settings.desktop</Filename>
+            <Filename>archlinux-betterlockscreen.desktop</Filename>
+            <Merge type="all"/>
+        </Layout>
+    </Menu>
 </Menu>

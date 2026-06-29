@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## 2026.06.29
+
+### What Changed
+- **New "Kiro Apps" application menu** grouping all the Kiro tweak/config tools in
+  one launcher folder (alongside the existing "Kiro" menu). Added a second `<Menu>`
+  block to `etc/skel/.config/menus/applications-merged/kiro.menu` that includes the
+  new `X-Kiro-Apps` category and orders the entries: Arch Linux Tweak Tool, Kiro ISO
+  Builder, Alacritty/Fastfetch/Fish Tweak Tools, ArchLinux Logout Settings,
+  Betterlockscreen. Hyprland Tweak Tool is intentionally excluded — it is the
+  Wayland/KIROTUX line, not part of the X11 Kiro ISO.
+
+### Technical Details
+- Same freedesktop pattern as the existing Kiro menu: category include + `<Layout>`
+  for ordering + `<Merge type="all"/>`. The `kiro-apps.directory` it references is
+  shipped by `kiro-system-files`. Each tool's `.desktop` gained `X-Kiro-Apps;`
+  appended to its `Categories=` (non-destructive — they still appear under
+  Settings/System too).
+
+### Files Modified
+- `etc/skel/.config/menus/applications-merged/kiro.menu`
+
 ## 2026.06.23
 
 ### What Changed
