@@ -10,6 +10,10 @@
 - **New qt6ct config** so Qt6 apps (flameshot, qBittorrent, gittyup, …) get the Kvantum style, Surfn icons and
   Noto Sans 11 like Qt5 apps. Needs the `qt6ct` package on the ISO.
 - GTK3 cursor size 24 to match GTK4 (was 0), and the GTK4 font is Noto Sans 11 like GTK3 (was Noto Sans 10).
+- **libadwaita apps follow the dark desktop.** pamac, File Roller, baobab, Calculator and other libadwaita apps
+  opened light on the ISO, because they only follow dconf `color-scheme`, which nothing set. A system-wide dconf
+  default now sets `color-scheme='prefer-dark'` plus `gtk-theme='Arc-Dawn-Dark'`, `icon-theme='Surfn'` and the Bibata
+  cursor, for every session and every user. A user's own dconf choice still overrides it.
 
 ### Technical Details
 - `qt6ct` registers its platform-theme plugin under both `qt6ct` and `qt5ct`, so the existing
@@ -18,12 +22,22 @@
 - Every value matches the reference setup verified on a live system on 2026-10-08 (ohmychadwm, user and root;
   XFCE still to be tested); plan and test results are in the kiro-iso theming project doc.
 - `/etc/skel` is copied to `/root` at install, so root-run apps (ATT, gparted) get the same settings.
+- dconf defaults: `etc/dconf/db/local.d/10-kiro-x11.conf` plus the profile `usr/share/dconf/profile/user`
+  (`user-db:user` / `system-db:local`). dconf also searches `$XDG_DATA_DIRS/dconf/profile/`, so the profile sits in
+  `/usr/share` and doesn't collide with kiro-wayland-dotfiles, which owns `/etc/dconf/profile/user` with the same
+  two lines and its own `local.d/00-kiro.conf`. Where both are installed, `10-kiro-x11` sorts later and wins
+  (checked with `dconf compile`). The dconf package's own pacman hook runs `dconf update` on install. Tested on the
+  live ISO in VirtualBox (ohmychadwm): user `color-scheme` reads `prefer-dark`, baobab, File Roller and pamac
+  render dark. A desktop portal started before the files were installed caches the old value until restarted —
+  not an issue on install, where the files exist before the session starts.
 
 ### Files Modified
 - etc/skel/.config/gtk-3.0/settings.ini
 - etc/skel/.config/gtk-4.0/settings.ini
 - etc/skel/.config/qt5ct/qt5ct.conf
 - etc/skel/.config/qt6ct/qt6ct.conf (new)
+- etc/dconf/db/local.d/10-kiro-x11.conf (new)
+- usr/share/dconf/profile/user (new)
 
 ## 2026.06.29
 
