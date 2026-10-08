@@ -1,5 +1,30 @@
 # CHANGELOG
 
+## 2026.10.08
+
+### What Changed
+- **GTK and Qt apps now share one look without `GTK_THEME` in `/etc/environment`.** The GTK4 settings name the
+  theme themselves (Arc-Dawn-Dark), so ohmychadwm and the other TWMs, which run no settings daemon, keep a themed
+  GTK4 once `GTK_THEME` is removed from the ISO. GTK3, GTK4, Qt5 and Qt6 all use the Surfn icons now; before, GTK4
+  used neo-candy-icons and Qt5 asked for Sardi-Arc, which the ISO doesn't install.
+- **New qt6ct config** so Qt6 apps (flameshot, qBittorrent, gittyup, …) get the Kvantum style, Surfn icons and
+  Noto Sans 11 like Qt5 apps. Needs the `qt6ct` package on the ISO.
+- GTK3 cursor size 24 to match GTK4 (was 0), and the GTK4 font is Noto Sans 11 like GTK3 (was Noto Sans 10).
+
+### Technical Details
+- `qt6ct` registers its platform-theme plugin under both `qt6ct` and `qt5ct`, so the existing
+  `QT_QPA_PLATFORMTHEME=qt5ct` serves Qt5 and Qt6 alike. qt6ct can't read qt5ct's `@Variant` font blobs, so
+  `qt6ct.conf` uses Qt6's plain font strings.
+- Every value matches the reference setup verified on a live system on 2026-10-08 (ohmychadwm, user and root;
+  XFCE still to be tested); plan and test results are in the kiro-iso theming project doc.
+- `/etc/skel` is copied to `/root` at install, so root-run apps (ATT, gparted) get the same settings.
+
+### Files Modified
+- etc/skel/.config/gtk-3.0/settings.ini
+- etc/skel/.config/gtk-4.0/settings.ini
+- etc/skel/.config/qt5ct/qt5ct.conf
+- etc/skel/.config/qt6ct/qt6ct.conf (new)
+
 ## 2026.06.29
 
 ### What Changed
