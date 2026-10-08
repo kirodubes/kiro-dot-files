@@ -19,8 +19,8 @@
 - `qt6ct` registers its platform-theme plugin under both `qt6ct` and `qt5ct`, so the existing
   `QT_QPA_PLATFORMTHEME=qt5ct` serves Qt5 and Qt6 alike. qt6ct can't read qt5ct's `@Variant` font blobs, so
   `qt6ct.conf` uses Qt6's plain font strings.
-- Every value matches the reference setup verified on a live system on 2026-10-08 (ohmychadwm, user and root;
-  XFCE still to be tested); plan and test results are in the kiro-iso theming project doc.
+- Every value matches the reference setup verified on 2026-10-08 on a workstation (ohmychadwm, user and root) and
+  on the live ISO v26.10.08 (XFCE and ohmychadwm); plan and test results are in the kiro-iso theming project doc.
 - `/etc/skel` is copied to `/root` at install, so root-run apps (ATT, gparted) get the same settings.
 - dconf defaults: `etc/dconf/db/local.d/10-kiro-x11.conf` plus the profile `usr/share/dconf/profile/user`
   (`user-db:user` / `system-db:local`). dconf also searches `$XDG_DATA_DIRS/dconf/profile/`, so the profile sits in
