@@ -8,13 +8,15 @@
         <Include>
             <Category>X-Kiro</Category>
         </Include>
+        <Exclude>
+            <Filename>kiro-assistant.desktop</Filename>
+        </Exclude>
         <Layout>
             <Filename>kiro-news.desktop</Filename>
             <Filename>kiro-link-website.desktop</Filename>
             <Filename>kiro-link-releases.desktop</Filename>
             <Filename>kiro-link-discussions.desktop</Filename>
             <Filename>kiro-link-code.desktop</Filename>
-            <Filename>kiro-assistant.desktop</Filename>
             <Merge type="all"/>
         </Layout>
     </Menu>
@@ -23,6 +25,8 @@
         <Directory>kiro-apps.directory</Directory>
         <Include>
             <Category>X-Kiro-Apps</Category>
+            <Filename>kiro-assistant.desktop</Filename>
+            <Filename>kiro-keybindings.desktop</Filename>
         </Include>
         <Layout>
             <Filename>archlinux-tweak-tool.desktop</Filename>
@@ -32,6 +36,8 @@
             <Filename>fish-tweak-tool.desktop</Filename>
             <Filename>archlinux-logout-settings.desktop</Filename>
             <Filename>archlinux-betterlockscreen.desktop</Filename>
+            <Filename>kiro-assistant.desktop</Filename>
+            <Filename>kiro-keybindings.desktop</Filename>
             <Merge type="all"/>
         </Layout>
     </Menu>
