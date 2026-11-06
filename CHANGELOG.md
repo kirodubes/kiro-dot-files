@@ -6,6 +6,7 @@
 - **New users get Surfn Kiro as icon theme** in GTK 3/4 and in Qt apps (qt5ct/qt6ct).
 
 ### Technical Details
+- The package now depends on `surfn-kiro-icons-git` (recipe in KIRO-PKG-BUILD-APPS): `kiro-skell` or the tweak tools' Reset to Kiro default copy skel's icon theme into existing homes, so it must be installed. Installing it changes no one's look.
 - Only skel files, which reach new homes. The system dconf default (`10-kiro-x11.conf`) stays `Surfn` until the package depends on `surfn-kiro-icons-git` (MASTER_TODO): it applies to existing users too, who may not have the theme.
 
 ### Files Modified
