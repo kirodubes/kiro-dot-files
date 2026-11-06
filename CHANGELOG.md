@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 2026.11.06
+
+### What Changed
+- **New users get Surfn Kiro as icon theme** in GTK 3/4 and in Qt apps (qt5ct/qt6ct).
+
+### Technical Details
+- Only skel files, which reach new homes. The system dconf default (`10-kiro-x11.conf`) stays `Surfn` until the package depends on `surfn-kiro-icons-git` (MASTER_TODO): it applies to existing users too, who may not have the theme.
+
+### Files Modified
+- `etc/skel/.config/gtk-3.0/settings.ini`, `gtk-4.0/settings.ini`
+- `etc/skel/.config/qt5ct/qt5ct.conf`, `qt6ct/qt6ct.conf`
+- `CHANGELOG.md`
+
 ## 2026.10.08
 
 ### What Changed
