@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 2026.11.13
+
+### What Changed
+- **The system-wide icon default is now Surfn Kiro** (dconf `icon-theme`). It still said `Surfn`, which the Kiro ISO
+  has not shipped since 11-06, so on new installs apps that read gsettings (GTK4/libadwaita apps, portals, ATT) asked
+  for a theme that was not there. Existing users who never picked an icon theme in gsettings switch to Surfn Kiro.
+
+### Technical Details
+- Safe on its own: this package already depends on `surfn-kiro-icons-git`. `10-` sorts after kiro-wayland-dotfiles'
+  `00-kiro.conf`, so where both are installed Surfn Kiro wins too. kiro-wayland-dotfiles' own `Surfn` defaults are
+  still open (MASTER_TODO) and need its dependency first.
+
+### Files Modified
+- `etc/dconf/db/local.d/10-kiro-x11.conf`
+- `CHANGELOG.md`
+
 ## 2026.11.06
 
 ### What Changed
