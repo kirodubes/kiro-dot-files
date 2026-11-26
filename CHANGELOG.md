@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 2026.11.26
+
+### What Changed
+- **paru runs the AUR check before it builds a package** (new accounts). The skel `~/.config/paru/paru.conf` gets
+  `PreBuildCommand = /usr/local/bin/kiro-aur-check` in `[bin]`, so paru shows the risky lines of an AUR PKGBUILD
+  (and asks on a dangerous one) before building it. Our skel has `SkipReview` on, so until now Kiro users never saw
+  a PKGBUILD at all.
+
+### Technical Details
+- `kiro-aur-check` and its on/off switch `kiro-paru-aur-check` come from kiro-system-files (same day); the scanner
+  is `cachyos-pi-scan` (nemesis). Without the scanner the check prints one line and the build goes on.
+- paru reads only one config, and a user's own file wins over `/etc/paru.conf`. That is why the line has to be in
+  this skel file too: kiro-system-files' hook only covers `/etc/paru.conf`. Existing accounts are switched on from
+  ATT (`kiro-paru-aur-check --file ~/.config/paru/paru.conf --enable`); the skel only reaches new accounts.
+- The line is marked `# Kiro: AUR check …`, the marker `kiro-paru-aur-check` uses to find and switch it.
+
+### Files Modified
+- `etc/skel/.config/paru/paru.conf`
+
 ## 2026.11.13
 
 ### What Changed
