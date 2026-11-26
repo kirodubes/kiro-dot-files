@@ -7,6 +7,8 @@
   `PreBuildCommand = /usr/local/bin/kiro-aur-check` in `[bin]`, so paru shows the risky lines of an AUR PKGBUILD
   (and asks on a dangerous one) before building it. Our skel has `SkipReview` on, so until now Kiro users never saw
   a PKGBUILD at all.
+- **yay does the same** (new accounts): a new skel `~/.config/yay/init.lua` loads Kiro's yay hook, so yay 13+ runs
+  the AUR check before its menus, downloads and builds.
 
 ### Technical Details
 - `kiro-aur-check` and its on/off switch `kiro-paru-aur-check` come from kiro-system-files (same day); the scanner
@@ -15,9 +17,13 @@
   this skel file too: kiro-system-files' hook only covers `/etc/paru.conf`. Existing accounts are switched on from
   ATT (`kiro-paru-aur-check --file ~/.config/paru/paru.conf --enable`); the skel only reaches new accounts.
 - The line is marked `# Kiro: AUR check …`, the marker `kiro-paru-aur-check` uses to find and switch it.
+- yay has no system-wide config, only `~/.config/yay/init.lua`, so the skel is the only way to reach new accounts.
+  The file holds just the marked line `kiro-yay-aur-check` switches; it loads `/usr/share/kiro/yay/aur-check.lua`
+  (kiro-system-files, same day) only when that file exists, so yay still starts without kiro-system-files.
 
 ### Files Modified
 - `etc/skel/.config/paru/paru.conf`
+- `etc/skel/.config/yay/init.lua` (new)
 
 ## 2026.11.13
 
